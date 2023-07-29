@@ -1,10 +1,7 @@
-mod bag;
 mod tiles;
-mod factory_centre;
-mod factory;
+mod factories;
 
 use rand::{thread_rng, Rng};
-use crate::bag::Bag;
 
 fn random_enum_variant() -> tiles::Tiles {
     let variants = [tiles::Tiles::Red, tiles::Tiles::Black, tiles::Tiles::DeepBlue];

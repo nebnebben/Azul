@@ -1,6 +1,5 @@
 use crate::tiles::Tiles;
 use rand::seq::SliceRandom;
-use crate::tiles;
 
 
 const NUM_TILES: usize = 100;
@@ -31,5 +30,14 @@ impl Bag {
             factory_tiles.push(tile)
         }
         factory_tiles
+    }
+
+    pub fn is_empty(&self) -> bool {
+        return self.unseen.is_empty()
+    }
+
+    pub fn reset_bag(&mut self) {
+        self.seen = Vec::new();
+        self.unseen = self.contents.to_vec();
     }
 }
