@@ -26,7 +26,7 @@ impl FactoryController {
             self.bag.reset_bag();
         }
 
-        for mut factory in &mut self.factories {
+        for factory in &mut self.factories {
             factory.update_tiles(self.bag.get_factory_tiles());
         }
     }
@@ -48,5 +48,8 @@ impl FactoryController {
         player_tiles
     }
 
+    pub fn get_tiles_from_centre(&mut self, chosen_tile: Tiles) -> Vec<Tiles> {
+        return self.factory_centre.choose_tiles(chosen_tile);
+    }
 
 }

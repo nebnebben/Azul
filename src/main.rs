@@ -1,5 +1,6 @@
 mod tiles;
 mod factories;
+mod player;
 
 use rand::{thread_rng, Rng};
 

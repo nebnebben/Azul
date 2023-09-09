@@ -27,7 +27,7 @@ impl FactoryCentre {
             .filter(|&tile| *tile == chosen_tile)
             .cloned()
             .collect();
-        // Does this work? It doesn't derefence tile
+
         self.tiles.retain(|&tile | tile != chosen_tile);
         chosen_tiles
     }
