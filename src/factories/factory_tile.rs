@@ -32,3 +32,34 @@ impl FactoryTile {
         chosen_tiles
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_update_tiles() {
+        let tiles = vec![Tiles::Red, Tiles::Red, Tiles::Yellow];
+        let mut factory_tile = FactoryTile::new(tiles);
+        let new_tiles = vec![Tiles::DeepBlue, Tiles::DeepBlue, Tiles::DeepBlue];
+        factory_tile.update_tiles(new_tiles.clone());
+        assert_eq!(factory_tile.tiles, new_tiles);
+    }
+
+    #[test]
+    fn test_get_current_tiles() {
+        let tiles = vec![Tiles::Red, Tiles::Red, Tiles::Yellow];
+        let mut factory_tile = FactoryTile::new(tiles.clone());
+        assert_eq!(factory_tile.get_current_tiles(), tiles);
+    }
+
+    #[test]
+    fn test_choose_tiles() {
+        let tiles = vec![Tiles::Red, Tiles::Red, Tiles::Yellow, Tiles::DeepBlue];
+        let mut factory_tile = FactoryTile::new(tiles);
+        let chosen_tile = Tiles::Red;
+        let chosen_tiles = factory_tile.choose_tiles(chosen_tile);
+        assert_eq!(chosen_tiles, vec![Tiles::Red, Tiles::Red]);
+        assert_eq!(factory_tile.get_current_tiles(), vec![Tiles::DeepBlue, Tiles::Yellow]);
+    }
+}
